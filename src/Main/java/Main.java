@@ -25,31 +25,43 @@ public class Main {
         charCounter.countChars(toEncode);
         nodes = charCounter.returnNodes();
         List<HuffmanNode> priorityQueue = new ArrayList<>(nodes);
-        heapMaker.buildMinHeap(priorityQueue);
+        System.out.println("ORIGINAL");
+        System.out.println(priorityQueue);
+        System.out.println("AFTER MIN HEAP");
+        priorityQueue = heapMaker.createMinHeap(priorityQueue);
+        System.out.println(priorityQueue);
 
         HuffmanNode root = new HuffmanNode();
 
+        System.out.println("------ ENTERING LOOP ------");
         while (priorityQueue.size() > 1) {
             HuffmanNode x = priorityQueue.get(0);
-            heapMaker.buildMinHeap(priorityQueue);
+            System.out.println("X: " + x);
+            priorityQueue = heapMaker.createMinHeap(priorityQueue);
             priorityQueue.remove(0);
+            System.out.println("AFTER X REMOVE: " + priorityQueue);
 
             HuffmanNode y = priorityQueue.get(0);
-            heapMaker.buildMinHeap(priorityQueue);
+            System.out.println("Y: " + y);
+            priorityQueue = heapMaker.createMinHeap(priorityQueue);
             priorityQueue.remove(0);
+            System.out.println("AFTER Y REMOVE: " + priorityQueue);
+
 
             HuffmanNode toInsert = new HuffmanNode();
 
             toInsert.weight = x.weight + y.weight;
             toInsert.value = '&';
-
             toInsert.left = x;
             toInsert.right = y;
 
             root = toInsert;
             priorityQueue.add(toInsert);
+            System.out.println("AFTER INSERT: " + priorityQueue);
+            priorityQueue = heapMaker.createMinHeap(priorityQueue);
+            System.out.println("------");
         }
-
-            huffmanPrinter.printHuffman(root, "");
+        System.out.println("END: " + root);
+        huffmanPrinter.printHuffman(root, "");
     }
 }

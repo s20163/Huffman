@@ -32,6 +32,11 @@ public class CharCounter {
     }
 
     public List<HuffmanNode> returnNodes() {
+//        nodes.add(new HuffmanNode("B", 4));
+//        nodes.add(new HuffmanNode("A", 7));
+//        nodes.add(new HuffmanNode("R", 5));
+//        nodes.add(new HuffmanNode(" ", 2));
+//        nodes.add(new HuffmanNode("M", 1));
         return nodes;
     }
 }

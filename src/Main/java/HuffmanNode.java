@@ -16,11 +16,22 @@ public class HuffmanNode {
 
     public HuffmanNode() {}
 
+//    @Override
+//    public String toString() {
+//        return "{" +
+//                "value=" + value +
+//                ", weight=" + weight +
+//                '}';
+//    }
+
+
     @Override
     public String toString() {
         return "{" +
                 "value=" + value +
                 ", weight=" + weight +
+                ", left=" + left +
+                ", right=" + right +
                 '}';
     }
 }
