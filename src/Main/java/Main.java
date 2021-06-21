@@ -1,6 +1,7 @@
 package Main.java;
 
 import java.io.IOException;
+import java.util.ArrayList;
 import java.util.List;
 
 public class Main {
@@ -9,6 +10,9 @@ public class Main {
 
         FileHandler fileHandler = new FileHandler();
         CharCounter charCounter = new CharCounter();
+        HuffmanPrinter huffmanPrinter = new HuffmanPrinter();
+        MinHeap heapMaker = new MinHeap();
+
         List<HuffmanNode> nodes;
         String toEncode = "";
 
@@ -20,9 +24,32 @@ public class Main {
 
         charCounter.countChars(toEncode);
         nodes = charCounter.returnNodes();
+        List<HuffmanNode> priorityQueue = new ArrayList<>(nodes);
+        heapMaker.buildMinHeap(priorityQueue);
 
-        for (HuffmanNode node : nodes) {
-            System.out.println(node);
+        HuffmanNode root = new HuffmanNode();
+
+        while (priorityQueue.size() > 1) {
+            HuffmanNode x = priorityQueue.get(0);
+            heapMaker.buildMinHeap(priorityQueue);
+            priorityQueue.remove(0);
+
+            HuffmanNode y = priorityQueue.get(0);
+            heapMaker.buildMinHeap(priorityQueue);
+            priorityQueue.remove(0);
+
+            HuffmanNode toInsert = new HuffmanNode();
+
+            toInsert.weight = x.weight + y.weight;
+            toInsert.value = '&';
+
+            toInsert.left = x;
+            toInsert.right = y;
+
+            root = toInsert;
+            priorityQueue.add(toInsert);
         }
+
+            huffmanPrinter.printHuffman(root, "");
     }
 }

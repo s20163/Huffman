@@ -5,11 +5,11 @@ import java.util.List;
 
 public class CharCounter {
     static final int MAX_CHAR = 256;
-    public List<HuffmanNode> nodes = new ArrayList();
+    private final ArrayList<HuffmanNode> nodes = new ArrayList<>();
 
     public void countChars(String text) {
-        int count[] = new int[MAX_CHAR];
-        char ch[] = new char[text.length()];
+        int[] count = new int[MAX_CHAR];
+        char[] ch = new char[text.length()];
         int n = text.length();
 
         for (int i = 0; i < n; i++) {
@@ -31,7 +31,7 @@ public class CharCounter {
         }
     }
 
-    public List<HuffmanNode> returnNodes () {
+    public List<HuffmanNode> returnNodes() {
         return nodes;
     }
 }
