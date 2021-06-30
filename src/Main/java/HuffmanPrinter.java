@@ -9,7 +9,7 @@ public class HuffmanPrinter {
             return;
         }
 
-        assert root.left != null;
+
         printHuffman(root.left, code + "0");
         printHuffman(root.right, code + "1");
     }

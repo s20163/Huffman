@@ -51,14 +51,16 @@ public class Main {
             HuffmanNode toInsert = new HuffmanNode();
 
             toInsert.weight = x.weight + y.weight;
-            toInsert.value = '&';
+            toInsert.value = x.value + y.value;
             toInsert.left = x;
             toInsert.right = y;
+            System.out.println("TO INSERT: " + toInsert);
 
             root = toInsert;
             priorityQueue.add(toInsert);
             System.out.println("AFTER INSERT: " + priorityQueue);
             priorityQueue = heapMaker.createMinHeap(priorityQueue);
+            System.out.println("AFTER MINHEAP: " + priorityQueue);
             System.out.println("------");
         }
         System.out.println("END: " + root);

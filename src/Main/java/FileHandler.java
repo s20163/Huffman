@@ -17,5 +17,5 @@ public class FileHandler {
 
     public void createEncodedFile () {}
 
-    public void readDecodedFile () {}
+    public void readEncodedFile () {}
 }

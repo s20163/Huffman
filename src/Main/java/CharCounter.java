@@ -26,17 +26,13 @@ public class CharCounter {
             }
 
             if (find == 1) {
-                nodes.add(new HuffmanNode(text.charAt(i), count[text.charAt(i)]));
+                String character = String.valueOf(text.charAt(i));
+                nodes.add(new HuffmanNode(character, count[text.charAt(i)]));
             }
         }
     }
 
     public List<HuffmanNode> returnNodes() {
-//        nodes.add(new HuffmanNode("B", 4));
-//        nodes.add(new HuffmanNode("A", 7));
-//        nodes.add(new HuffmanNode("R", 5));
-//        nodes.add(new HuffmanNode(" ", 2));
-//        nodes.add(new HuffmanNode("M", 1));
         return nodes;
     }
 }
