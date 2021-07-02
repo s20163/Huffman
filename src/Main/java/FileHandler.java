@@ -1,8 +1,6 @@
 package Main.java;
 
-import java.io.BufferedReader;
-import java.io.FileReader;
-import java.io.IOException;
+import java.io.*;
 
 public class FileHandler {
 
@@ -15,7 +13,21 @@ public class FileHandler {
         return text;
     }
 
-    public void createEncodedFile () {}
+    public void createEncodedFile (String codeToWrite, String msgToWrite) {
+        File encodedFile = new File("src/Main/resources/encoded.txt");
+        try {
+            encodedFile.createNewFile();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+        try {
+            FileWriter writer = new FileWriter(encodedFile);
+            writer.write(codeToWrite + "MSG:" + msgToWrite);
+            writer.close();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+    }
 
     public void readEncodedFile () {}
 }
