@@ -11,8 +11,6 @@ public class Main {
         CharCounter charCounter = new CharCounter();
         HuffmanPrinter huffmanPrinter = new HuffmanPrinter();
         MinHeap heapMaker = new MinHeap();
-
-        List<HuffmanNode> nodes;
         String toEncode = "";
 
         try {
@@ -22,7 +20,7 @@ public class Main {
         }
 
         charCounter.countChars(toEncode);
-        nodes = charCounter.returnNodes();
+        List<HuffmanNode> nodes = charCounter.returnNodes();
         System.out.println("ORIGINAL");
         System.out.println(nodes);
         System.out.println("AFTER MIN HEAP");
@@ -45,12 +43,12 @@ public class Main {
             heapMaker.buildMinHeap(nodes);
             System.out.println("AFTER Y REMOVE: " + nodes);
 
-            HuffmanNode toInsert = new HuffmanNode();
+            HuffmanNode toInsert = new HuffmanNode(x.value + y.value, x.weight + y.weight, x, y);
 
-            toInsert.weight = x.weight + y.weight;
-            toInsert.value = x.value + y.value;
-            toInsert.left = x;
-            toInsert.right = y;
+//            toInsert.weight = x.weight + y.weight;
+//            toInsert.value = x.value + y.value;
+//            toInsert.left = x;
+//            toInsert.right = y;
             System.out.println("TO INSERT: " + toInsert);
 
             root = toInsert;
@@ -62,7 +60,8 @@ public class Main {
         }
         System.out.println("END: " + root);
         huffmanPrinter.printHuffman(root, "");
+        huffmanPrinter.encodeMsg(fileHandler.text);
 
-//        fileHandler.createEncodedFile(huffmanPrinter.codeTable, huffmanPrinter.codedMsg);
+        fileHandler.createEncodedFile(huffmanPrinter.codingTable, huffmanPrinter.codedMsg);
     }
 }
