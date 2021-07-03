@@ -20,7 +20,7 @@ public class HuffmanPrinter {
 
     }
 
-    public void encodeMsg(String msg) {
+    public String encodeMsg(String msg) {
         String[] explodedCodeValues = codingTable.split(":");
         List<HuffmanNode> codedNodes = new ArrayList<>();
         for (int i = 0; i < explodedCodeValues.length; i += 2) {
@@ -37,5 +37,6 @@ public class HuffmanPrinter {
                 }
             }
         }
+        return codedMsg;
     }
 }

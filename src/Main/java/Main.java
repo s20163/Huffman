@@ -44,24 +44,17 @@ public class Main {
             System.out.println("AFTER Y REMOVE: " + nodes);
 
             HuffmanNode toInsert = new HuffmanNode(x.value + y.value, x.weight + y.weight, x, y);
-
-//            toInsert.weight = x.weight + y.weight;
-//            toInsert.value = x.value + y.value;
-//            toInsert.left = x;
-//            toInsert.right = y;
             System.out.println("TO INSERT: " + toInsert);
-
             root = toInsert;
             nodes.add(toInsert);
             System.out.println("AFTER INSERT: " + nodes);
+
             heapMaker.buildMinHeap(nodes);
             System.out.println("AFTER MINHEAP: " + nodes);
             System.out.println("------");
         }
         System.out.println("END: " + root);
         huffmanPrinter.printHuffman(root, "");
-        huffmanPrinter.encodeMsg(fileHandler.text);
-
-        fileHandler.createEncodedFile(huffmanPrinter.codingTable, huffmanPrinter.codedMsg);
+        fileHandler.createEncodedFile(huffmanPrinter.codingTable, huffmanPrinter.encodeMsg(fileHandler.text));
     }
 }
